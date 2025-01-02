@@ -1,3 +1,3 @@
 config.ini
 superusers.txt
-out/*.xlsx
+*.xlsx
