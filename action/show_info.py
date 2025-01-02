@@ -36,6 +36,10 @@ CONTACT, DATE, MONTH, DAY = 1, 2, 3, 4
 
 db_filepath = os.path.join('out', 'db.xlsx')
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    if not os.path.exists(os.path.join("out", 'db.xlsx')):
+        await update.message.reply_text(f'Не найдена база данных...')
+        return ConversationHandler.END
+
     text = f'Привет, {update.effective_user.first_name}. Отправьте свой Телеграм контакт, чтобы проверить информацию о себе.'
     reply_keyboard = [[KeyboardButton(text="Отправить контакт",
                                      request_contact=True,)]]
